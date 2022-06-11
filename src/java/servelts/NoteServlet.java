@@ -32,12 +32,12 @@ public class NoteServlet extends HttpServlet {
             throws ServletException, IOException {
         String path = getServletContext().getRealPath("/WEB-INF/note.txt");
         // to read files
-        BufferedReader br = new BufferedReader(new FileReader(new File(path)));
+        BufferedReader b = new BufferedReader(new FileReader(new File(path)));
        
-        Note page = new Note(br.readLine(),br.readLine());
+        Note page = new Note(b.readLine(),b.readLine());
         
         request.setAttribute("note",page);
-        br.close();
+        b.close();
         if (request.getParameter("edit")!= null)
         {
             getServletContext().getRequestDispatcher("/WEB-INF/editnote.jsp").forward(request, response);
